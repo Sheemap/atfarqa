@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        body {
+            background: #313338;
+        }
+
+        div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            text-align: center;
+            background: #3c4270;
+            width: 130px;
+            border-radius: 5px;
+            padding: 0;
+            color: #c9cdfb;
+            transition: background-color 50ms ease-out, color 50ms ease-out;
+            cursor: pointer;
+            font-weight: 500;
+            font-family: "gg sans", "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+        }
+
+        h1:hover {
+            background: #5865f2;
+            color: #c9cdfb;
+        }
+
+        a {
+            text-decoration: none;
+            color: #c9cdfb;
+        }
+    </style>
+
+</head>
+
+<body>
+    <audio src="discord-notification.mp3"></audio>
+    <div>
+        <h1>
+            <a target="_blank" href="https://youtu.be/Tce0WKdNUKU">
+                @Farqa
+            </a>
+        </h1>
+    </div>
+
+    <script lang="js">
+        // At least one discord notification should play every 2 hours (so long as the tab is open)
+        // If you are reading this don't say anything :)
+        const MAX_DURATION = 7200;
+
+        // Chrome wont let us play audio till the user interacts with the site
+        // So wait till they click the link to play the audio
+        var enabled = false;
+
+        window.addEventListener("DOMContentLoaded", event => {
+            const audio = document.querySelector("audio");
+            audio.volume = 0.5;
+
+            const link = document.querySelector("a");
+            link.addEventListener("click", event => {
+                enabled = true;
+                audio.play();
+            });
+
+            var denom = MAX_DURATION;
+            setInterval(() => {
+                if (!enabled) {
+                    return;
+                }
+
+                var num = Math.floor(Math.random() * denom);
+                if (num == 0) {
+                    audio.play();
+                    denom = MAX_DURATION;
+                } else {
+                    denom = denom - 1;
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+
+</html>
