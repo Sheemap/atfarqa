@@ -11,12 +11,19 @@
     <style>
         body {
             background: #313338;
+            font-family: "gg sans", "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: #c9cdfb;
+        }
+
+        a {
+            cursor: default;
         }
 
         div {
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 10px;
         }
 
         h1 {
@@ -25,11 +32,9 @@
             width: 130px;
             border-radius: 5px;
             padding: 0;
-            color: #c9cdfb;
             transition: background-color 50ms ease-out, color 50ms ease-out;
-            cursor: pointer;
             font-weight: 500;
-            font-family: "gg sans", "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            cursor: pointer;
 
         }
 
@@ -42,23 +47,30 @@
             text-decoration: none;
             color: #c9cdfb;
         }
+
+        h2 {
+            color: #c9cdfb;
+            font-weight: 500;
+            cursor: pointer;
+        }
     </style>
 
 </head>
 
 <body>
     <audio src="discord-notification.mp3"></audio>
-    <div>
-        <h1>
-            <a target="_blank" href="https://youtu.be/Tce0WKdNUKU">
+    <a target="_blank" href="https://youtu.be/Tce0WKdNUKU">
+        <div>
+            <h1>
                 @Farqa
-            </a>
-        </h1>
-    </div>
+            </h1>
+            <h2>click me :)</h2>
+        </div>
+    </a>
 
-    <script lang="js">
+    <script>
         // At least one discord notification should play every 2 hours (so long as the tab is open)
-        // If you are reading this don't say anything :)
+        // If you are reading this, shhhhhhh :)
         const MAX_DURATION = 7200;
 
         // Chrome wont let us play audio till the user interacts with the site
